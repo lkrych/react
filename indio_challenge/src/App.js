@@ -5,7 +5,7 @@ import './assets/react-toolbox/theme.css';
 import theme from './assets/react-toolbox/theme.js';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 
-import Button from 'react-toolbox/lib/button/Button';
+import TabView from './components/tab-view';
 
 class App extends Component {
   render() {
@@ -17,9 +17,7 @@ class App extends Component {
             <h2>Indio React Challenge</h2>
           </div>
           <p className="App-intro">
-            To get started, press this button
-            <br></br>
-            <Button label="Test Button" raised primary />
+            <TabView/>
           </p>
         </div>
       </ThemeProvider>
