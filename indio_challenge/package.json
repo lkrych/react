@@ -6,7 +6,7 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-scripts": "1.0.10",
-    "react-toolbox": "^2.0.0-beta.12"
+    "react-toolbox": "2.0.0-beta.6"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,5 +17,21 @@
   },
   "devDependencies": {
     "react-toolbox-themr": "^1.0.2"
+  },
+  "reactToolbox": {
+    "include": [
+      "BUTTON",
+      "TABS",
+      "INPUT",
+      "DROPDOWN"
+    ],
+    "customProperties": {
+      "animation-duration": "0.3s",
+      "color-accent": "var(--palette-pink-a200)",
+      "color-accent-dark": "var(--palette-pink-700)",
+      "color-primary-contrast": "var(--color-dark-contrast)",
+      "color-accent-contrast": "var(--color-dark-contrast)"
+    },
+    "output": "assets/react-toolbox"
   }
 }
