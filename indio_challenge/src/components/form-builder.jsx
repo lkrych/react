@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 
+import InputGroup from './form_input/input_group';
 
-import {Input} from 'react-toolbox/lib/input';
+//FormBuilder will manage the overall state of the form
 
 class FormBuilder extends Component {
   constructor(props){
     super(props);
     this.state = {
-
+        formState: ''
       };
   }
 
   render() {
     return (
-     <section>
-       
-     </section>
+     <form>
+       <InputGroup/>
+     </form>
    );
   }
 }

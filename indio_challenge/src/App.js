@@ -16,9 +16,9 @@ class App extends Component {
             <img src={logo} className="App-logo" alt="logo" />
             <h2>Indio React Challenge</h2>
           </div>
-          <p className="App-intro">
-            <TabView/>
-          </p>
+
+          <TabView/>
+
         </div>
       </ThemeProvider>
     );
