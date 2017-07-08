@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 
 class TabView extends Component {
+  constructor(){
+    this.state = {
+    };
+  }
   render() {
     // ...
   }
