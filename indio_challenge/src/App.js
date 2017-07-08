@@ -7,6 +7,10 @@ import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 
 import TabView from './components/tab-view';
 
+// TabView handles creating, editing and saving the form state. The form state is created in
+// the form-builder, the form is itself created in the form-viewer, and it is converted into
+// exportable JSON with the export componenet
+
 class App extends Component {
   render() {
     return (
