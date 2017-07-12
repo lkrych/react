@@ -34,6 +34,10 @@ class InputGroup extends Component {
     this.props.removeInput(questionId);
   }
 
+  addSubInput(questionId){
+    this.props.addSubInput(questionId);
+  }
+
   render() {
     return (
       <div className = "question-container">
@@ -46,7 +50,7 @@ class InputGroup extends Component {
           value={this.state.questionType}
         />
       <div className="question-buttons">
-        <Button label="Add Sub-Question" className="" raised primary />
+        <Button label="Add Sub-Question" onClick = {() => this.addSubInput(this.props.questionKey)} className="" raised primary />
         <span className="button-span"></span>
         <Button label="Delete this question" onClick = {() => this.removeInput(this.props.questionKey)} className="delete-button" raised primary />
       </div>

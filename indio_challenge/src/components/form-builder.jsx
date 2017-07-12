@@ -26,6 +26,7 @@ class FormBuilder extends Component {
           questionType = {this.props.form[key]['questionType']}
           questionText = {this.props.form[key]['questionText']}
           removeInput = {this.props.removeInput}
+          addSubInput = {this.props.addSubInput}
           />
       ));
     return (
