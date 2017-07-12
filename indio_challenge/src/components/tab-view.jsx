@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Tab, Tabs} from 'react-toolbox/lib/tabs';
 import merge from 'lodash/merge';
+import JSONPretty from 'react-json-pretty';
 
 import FormBuilder from './form-builder';
 const uuidv1 = require('uuid/v1');
@@ -74,12 +75,9 @@ class TabView extends Component {
     var newInput = {};
     newInput[inputId] = {condition: '', conditionText: '',
                         questionText: '', questionType: '', subInputs: []};
-    console.log('new input', newInput);
     var newForm = this.state.form;
     var parent = newForm[parentId];
-    console.log('parent subInputs', parent.subInputs);
     parent.subInputs.push(newInput);
-    console.log('updated parent', parent);
     //update form state
     this.setState({
       form: newForm
@@ -101,8 +99,12 @@ class TabView extends Component {
   }
 
   //can be called on each individual field that can be edited
-  onInputChange(questionId, input){
+  onInputChange(questionId, name, value){
     const newForm = this.state.form;
+    newForm[questionId][name] = value;
+    this.setState({
+      form: newForm
+    });
   }
 
 
@@ -123,7 +125,9 @@ class TabView extends Component {
                    />
          </Tab>
          <Tab label='Preview'><small>Secondary content</small></Tab>
-         <Tab label='Export'><small>Disabled content</small></Tab>
+         <Tab label='Export'>
+           <JSONPretty id="json-pretty" json={this.state.form}></JSONPretty>
+           </Tab>
        </Tabs>
      </section>
    );

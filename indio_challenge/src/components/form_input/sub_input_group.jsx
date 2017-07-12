@@ -5,17 +5,20 @@ import Button from 'react-toolbox/lib/button/Button';
 
 //InputGroup will manage the state of individual components of the form.
 
-class InputGroup extends Component {
+class SubInputGroup extends Component {
   constructor(props){
     super(props);
-    this.state = {
-        questionType: 'none',
-        questionText: 'Your new question'
-      };
+
+    this.conditions = [
+      { value: 'equals', label: "Equals" },
+      { value: 'greater than', label: "Greater than" },
+      { value: 'less than', label: "Less than" }
+    ];
+
     this.questionTypes = [
     { value: 'text', label: "Text" },
     { value: 'number', label: 'Number' },
-    { value: 'radio', label: 'Yes/No' }
+    { value: 'radio', label: 'Yes / No' }
       ];
     this.removeInput = this.removeInput.bind(this);
   }
@@ -34,7 +37,17 @@ class InputGroup extends Component {
 
   render() {
     return (
-      <div className = "question-container">
+      <div className = "sub-question-container">
+        <div className = "sub-question-group">
+          <Dropdown
+            auto={false}
+            source={this.conditions}
+            onChange={this.onInputChange.bind(this, 'questionType')}
+            label='Select question type'
+            value={this.props.condition}
+          />
+        <Input type='text' name='conditionText' value={this.props.conditionText} onChange={this.onInputChange.bind(this, 'conditionText')} />
+        </div>
         <Input type='text' label='Question' name='questionText' value={this.props.questionText} onChange={this.onInputChange.bind(this, 'questionText')} />
         <Dropdown
           auto={false}
@@ -54,4 +67,4 @@ class InputGroup extends Component {
   }
 }
 
-export default InputGroup; // Don’t forget to use export default!
+export default SubInputGroup; // Don’t forget to use export default!

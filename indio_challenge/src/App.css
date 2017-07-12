@@ -54,3 +54,20 @@
 .new-question-button {
   margin-top: 2vh;
 }
+
+.sub-question-container{
+  border: 1px solid pink;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 40px;
+}
+
+.sub-question-group {
+  display: flex;
+  align-content: space-between;
+}
