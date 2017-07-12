@@ -1,17 +1,23 @@
 import React, { Component } from 'react';
 import {Tab, Tabs} from 'react-toolbox/lib/tabs';
+import merge from 'lodash/merge';
 
 import FormBuilder from './form-builder';
+const uuidv1 = require('uuid/v1');
+
+
 
 //in order to pass state across tabs, the logic for modifying the state needs
 // to be passed down into the formBuilder from TabViewer
+
+
 
 class TabView extends Component {
   constructor(props){
     super(props);
     this.state = {
       tabIndex: 0,
-      form: JSON.parse(localStorage.getItem('indioForm') || '[]') // Either retrieve the JSON or create an empty array
+      form: JSON.parse(localStorage.getItem('indioForm') || '{}') // Either retrieve the JSON or create an empty array
       //localStorage info: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
       };
     this.handleTabChange = this.handleTabChange.bind(this);
@@ -21,25 +27,42 @@ class TabView extends Component {
     this.onInputChange = this.onInputChange.bind(this);
   }
 
+  componentDidUpdate(){
+    localStorage.setItem('indioForm', JSON.stringify(this.state.form));
+  }
+
   handleTabChange(tabIndex){
     this.setState({tabIndex});
   }
 
+  //allows questions to be added to form state
   addInput(){
+    let inputId = uuidv1();
+    var newInput = {};
+    newInput[inputId] = {questionText: '', questionType: ''};
+    this.setState({
+      form: merge({}, this.state.form, newInput)
+    });
+  }
+
+  //allows questions to be deleted
+  removeInput(questionId){
+    const newForm = this.state.form;
+    delete newForm[questionId];
+    this.setState({
+      form: newForm
+    });
+  }
+  //allows questions to be nested
+  addSubInput(parentId){
 
   }
 
-  removeInput(){
-
-  }
-
-  addSubInput(){
-
-  }
-
+  //can be called on each individual field that can be edited
   onInputChange(){
-    
+
   }
+
 
   render() {
     return (
@@ -49,13 +72,13 @@ class TabView extends Component {
            <h2> Welcome to the Indio Form Generator</h2>
            <p> Select a question type and create your form. You can preview your form in
            the <b>Preview</b> tab, and export your form data as JSON in the <b>Export</b> tab.</p>
-         <FormBuilder
-           form = {this.state.form}
-           addInput = {this.state.addInput}
-           removeInput = {this.state.removeInput}
-           addSubInput = {this.state.addSubInput}
-           onInputChange = {this.state.onInputChange}
-                />
+           <FormBuilder
+              form = {this.state.form}
+              addInput = {this.addInput}
+              removeInput = {this.removeInput}
+              addSubInput = {this.addSubInput}
+              onInputChange = {this.onInputChange}
+                   />
          </Tab>
          <Tab label='Preview'><small>Secondary content</small></Tab>
          <Tab label='Export'><small>Disabled content</small></Tab>

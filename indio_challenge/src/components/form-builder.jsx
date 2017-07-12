@@ -1,26 +1,40 @@
 import React, { Component } from 'react';
+import Button from 'react-toolbox/lib/button/Button';
 
 import InputGroup from './form_input/input_group';
 
-//FormBuilder will manage the overall state of the form
-
-// Forms are composed of questionSelectors and formInputs
-// questionSelectors are the topmost input, and they contain an array of formInputs
-// formInputs can be nested indefinitely
 
 class FormBuilder extends Component {
   constructor(props){
     super(props);
     this.state = {
-        formState: ''
+        formState: '',
+        inputCounter: 0
       };
+    this.addInput = this.addInput.bind(this);
+  }
+
+  addInput(){
+    this.props.addInput();
   }
 
   render() {
+    const questions = Object.keys(this.props.form).map(key => (
+      <InputGroup
+          key = {key}
+          questionKey = {key}
+          questionType = {this.props.form[key]['questionType']}
+          questionText = {this.props.form[key]['questionText']}
+          removeInput = {this.props.removeInput}
+          />
+      ));
     return (
-     <form>
-       <InputGroup/>
-     </form>
+      <form className="input-form">
+        <div className="input-container">
+          {questions}
+       </div>
+       <Button label="Add a new question" onClick ={this.addInput} className="new-question-button" raised primary />
+      </form>
    );
   }
 }

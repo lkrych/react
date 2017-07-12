@@ -23,3 +23,34 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.input-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.question-container{
+  border: 1px solid black;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+  margin: 30px;
+}
+
+.question-buttons{
+  display: flex;
+  margin: 1vw;
+}
+
+.button-span{
+  width: 10px;
+}
+
+.delete-button{
+  background-color: #FF4081;
+}
+.new-question-button {
+  margin-top: 2vh;
+}
