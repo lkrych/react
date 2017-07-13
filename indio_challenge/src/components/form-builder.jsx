@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from 'react-toolbox/lib/button/Button';
 
-import InputGroup from './form_input/input_group';
+import InputGroup from './form-input/input-group';
 
 
 class FormBuilder extends Component {
@@ -20,15 +20,19 @@ class FormBuilder extends Component {
 
   render() {
     const questions = Object.keys(this.props.form).map(key => (
-      <InputGroup
-          key = {key}
-          questionKey = {key}
-          questionType = {this.props.form[key]['questionType']}
-          questionText = {this.props.form[key]['questionText']}
-          removeInput = {this.props.removeInput}
-          addSubInput = {this.props.addSubInput}
-          onInputChange = {this.props.onInputChange}
-          />
+      <div key = {key}>
+        <InputGroup
+            questionKey = {key}
+            questionType = {this.props.form[key]['questionType']}
+            questionText = {this.props.form[key]['questionText']}
+            removeInput = {this.props.removeInput}
+            addSubInput = {this.props.addSubInput}
+            onInputChange = {this.props.onInputChange}
+            />
+          <p>There are {this.props.form[key].subInputs.length} sub-questions for this question</p>
+      </div>
+
+
       ));
     return (
       <form className="input-form">
@@ -41,4 +45,4 @@ class FormBuilder extends Component {
   }
 }
 
-export default FormBuilder; // Don’t forget to use export default!
+export default FormBuilder;

@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {Tab, Tabs} from 'react-toolbox/lib/tabs';
 import merge from 'lodash/merge';
 import JSONPretty from 'react-json-pretty';
+import 'react-json-pretty/JSONPretty.monikai.styl';
 
+import FormCreator from './form-creator';
 import FormBuilder from './form-builder';
 const uuidv1 = require('uuid/v1');
 
@@ -113,7 +115,7 @@ class TabView extends Component {
      <section>
        <Tabs index={this.state.tabIndex} onChange={this.handleTabChange} inverse>
          <Tab label='Create'>
-           <h2> Welcome to the Indio Form Generator</h2>
+           <h2>Welcome to the Indio Form Generator</h2>
            <p> Select a question type and create your form. You can preview your form in
            the <b>Preview</b> tab, and export your form data as JSON in the <b>Export</b> tab.</p>
            <FormBuilder
@@ -124,10 +126,20 @@ class TabView extends Component {
               onInputChange = {this.onInputChange}
                    />
          </Tab>
-         <Tab label='Preview'><small>Secondary content</small></Tab>
+         <Tab label='Preview'>
+           <h2>Your form</h2>
+           <p>Click on create to revise your form.</p>
+           <FormCreator
+             form= {this.state.form}
+             />
+
+          </Tab>
          <Tab label='Export'>
-           <JSONPretty id="json-pretty" json={this.state.form}></JSONPretty>
-           </Tab>
+           <h2>Your data</h2>
+           <div className = "json-div">
+             <JSONPretty id="json-pretty" json={this.state.form}></JSONPretty>
+           </div>
+         </Tab>
        </Tabs>
      </section>
    );
