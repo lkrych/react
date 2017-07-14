@@ -61,6 +61,5 @@ export const displayConditional = (questionType, value, subInputs) => {
       }
     });
   }
-  console.log('subQs: ', subQuestions);
   return subQuestions;
 };

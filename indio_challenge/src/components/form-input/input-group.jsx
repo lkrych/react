@@ -63,6 +63,7 @@ class InputGroup extends Component {
             onChange={this.onInputChange.bind(this, 'questionType')}
             label='Select question type'
             value={this.props.questionType}
+            required
           />
         <div className="question-buttons">
           <Button label="Add Sub-Question" onClick = {() => this.addSubInput(this.props.questionKey)} className="" raised primary />

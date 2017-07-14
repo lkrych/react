@@ -61,7 +61,7 @@ class SubInputGroup extends Component {
             auto={false}
             source={this.conditions}
             onChange={this.onInputChange.bind(this, 'condition')}
-            label='Select question type'
+            label='Select Condition'
             value={this.props.condition}
           />
         <Input type='text' name='conditionText' value={this.props.conditionText} onChange={this.onInputChange.bind(this, 'conditionText')} />
@@ -73,6 +73,7 @@ class SubInputGroup extends Component {
           onChange={this.onInputChange.bind(this, 'questionType')}
           label='Select question type'
           value={this.props.questionType}
+          required
         />
       <div className="question-buttons">
         <Button label="Add Sub-Question" onClick = {() => this.addSubInput(this.props.questionKey)} className="" raised primary />

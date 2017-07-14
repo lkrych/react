@@ -23,15 +23,12 @@ export const addNestedSubInput = (state, parentId, newInput) => {
 };
 
 const depthFirstDeletion = (subInputsArray, objectId) => {
-  console.log('Im looking for ', objectId);
   if(subInputsArray.length === 0){
     return;
   }
   subInputsArray.forEach((subItem, idx) => {
     let key = Object.keys(subItem)[0];
-    console.log('investigating object: ', key);
     if(key === objectId){
-      console.log('Deleting object: ', key);
       subInputsArray.splice(idx, 1);
     } else{
       depthFirstDeletion(subItem[key]['subInputs'], objectId);
