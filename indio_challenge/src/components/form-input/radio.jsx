@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { RadioGroup, RadioButton } from 'react-toolbox/lib/radio';
+import RadioGroup from 'react-toolbox/lib/radio/RadioGroup';
+import RadioButton from 'react-toolbox/lib/radio/RadioButton';
 
 
 class RadioButtons extends Component {
