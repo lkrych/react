@@ -11,6 +11,9 @@ import { displayState } from '../util/display-state';
 class FormCreator extends Component {
   constructor(props){
     super(props);
+    this.state = {
+
+    };
   }
 
   render(){
@@ -21,7 +24,7 @@ class FormCreator extends Component {
           <div key = {idx}>
             <p>{element.questionText}</p>
             <RadioButtons
-              subItems = {element.subItems} />
+              subInputs = {element.subInputs} />
           </div>
         );
       } else if (element.questionType == 'number'){
@@ -29,7 +32,7 @@ class FormCreator extends Component {
           <div key = {idx}>
             <p>{element.questionText}</p>
             <NumberInput
-              subItems = {element.subItems} />
+              subInputs = {element.subInputs} />
           </div>
         );
       } else {
@@ -37,7 +40,7 @@ class FormCreator extends Component {
             <div key = {idx}>
               <p>{element.questionText}</p>
               <TextInput
-                subItems = {element.subItems} />
+                subInputs = {element.subInputs} />
             </div>
           );
       }

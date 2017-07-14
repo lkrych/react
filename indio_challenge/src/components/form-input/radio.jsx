@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import RadioGroup from 'react-toolbox/lib/radio/RadioGroup';
 import RadioButton from 'react-toolbox/lib/radio/RadioButton';
 
+import {displayConditional} from '../../util/form-creator-helper';
+
 
 class RadioButtons extends Component {
   constructor(props){
@@ -17,11 +19,17 @@ class RadioButtons extends Component {
   }
 
   render(){
+    const subQuestions = displayConditional("radio", this.state.value, this.props.subInputs);
     return (
-      <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange} className ="radio-group">
-        <RadioButton label='Yes' value='yes'/>
-        <RadioButton label='No' value='no' className="no-radio-button"/>
-      </RadioGroup>
+      <div>
+        <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange} className ="radio-group">
+          <RadioButton label='yes' value='yes'/>
+          <RadioButton label='no' value='no' className="no-radio-button"/>
+        </RadioGroup>
+        <div className = 'sub-questions-form'>
+          {subQuestions}
+        </div>
+      </div>
     );
   }
 }

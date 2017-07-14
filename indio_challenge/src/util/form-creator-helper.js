@@ -1,33 +1,49 @@
-import NumberInput from './form-input/number';
-import TextInput from './form-input/text';
-import RadioButtons from './form-input/radio';
+import React, { Component} from 'react';
+import NumberInput from '../components/form-input/number';
+import TextInput from '../components/form-input/text';
+import RadioButtons from '../components/form-input/radio';
 
-const generateFormElements = (stateElements) =>{
-   stateElements.map((element, idx) => {
-    if(element.questionType === 'radio'){
-      return(
-        <div key = {idx}>
-          <p>{element.questionText}</p>
-          <RadioButtons
-            subItems = {element.subItems} />
-        </div>
-      );
-    } else if (element.questionType === 'number'){
-      return(
-        <div key = {idx}>
-          <p>{element.questionText}</p>
-          <NumberInput
-            subItems = {element.subItems} />
-        </div>
-      );
-    } else {
-        return(
+
+export const displayConditional = (questionType, value, subInputs) => {
+  const subQuestions = [];
+  if(questionType == "radio"){
+    subInputs.forEach((item,idx) => {
+      let key = Object.keys(item)[0];
+      if (item[key]['conditionText'] === value){
+        let jsx = <div key = {idx}>
+                    <p>{item[key].questionText}</p>
+                    <RadioButtons
+                      subInputs = {item[key].subInputs} />
+                  </div>;
+        subQuestions.push(jsx);
+      }
+    });
+  } else if (questionType == "number") {
+    subInputs.forEach((item,idx) => {
+      let key = Object.keys(item)[0];
+      if (item[key]['conditionText'] === value){
+        subQuestions.push(
           <div key = {idx}>
-            <p>{element.questionText}</p>
-            <TextInput
-              subItems = {element.subItems} />
+            <p>{item[key].questionText}</p>
+            <NumberInput
+              subInputs = {item[key].subInputs} />
           </div>
         );
-    }
-  });
+      }
+    });
+  } else{
+    subInputs.forEach((item,idx) => {
+      let key = Object.keys(item)[0];
+      if (item[key]['conditionText'] === value){
+        subQuestions.push(
+          <div key = {idx}>
+            <p>{item[key].questionText}</p>
+            <TextInput
+              subInputs = {item[key].subInputs} />
+          </div>
+        );
+      }
+    });
+  }
+  return subQuestions;
 };
