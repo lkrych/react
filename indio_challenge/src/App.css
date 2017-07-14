@@ -97,3 +97,10 @@
 .no-radio-button{
   margin-left: 80px;
 }
+
+.export-json{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
