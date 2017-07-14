@@ -128,8 +128,9 @@ class TabView extends Component {
          <Tab label='Export'>
            <h2>Your data</h2>
            <div className="export-json-container">
-             <textarea  rows="35" cols="30" className = "export-json">
-              { JSON.stringify(this.state.form, undefined, 2)}
+             <textarea  rows="35" cols="30"
+               className = "export-json"
+               defaultValue = { JSON.stringify(this.state.form, undefined, 2)} >
              </textarea>
            </div>
          </Tab>
