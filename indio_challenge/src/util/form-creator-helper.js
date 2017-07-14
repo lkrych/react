@@ -3,7 +3,7 @@ import NumberInput from '../components/form-input/number';
 import TextInput from '../components/form-input/text';
 import RadioButtons from '../components/form-input/radio';
 
-const makeComponent = (questionType, item, key, idx) => {
+const makeComponent = (item, key, idx) => {
   let componentHash = {
     "text": <div key = {idx}>
               <p>{item[key].questionText}</p>
@@ -22,7 +22,7 @@ const makeComponent = (questionType, item, key, idx) => {
               </div>
   };
 
-  return componentHash[questionType];
+  return componentHash[item[key].questionType];
 };
 
 export const displayConditional = (questionType, value, subInputs) => {
@@ -31,23 +31,36 @@ export const displayConditional = (questionType, value, subInputs) => {
     subInputs.forEach((item,idx) => {
       let key = Object.keys(item)[0];
       if (item[key]['conditionText'] === value){
-        subQuestions.push(makeComponent(item[key].questionType, item, key, idx));
+        subQuestions.push(makeComponent(item, key, idx));
       }
     });
   } else if (questionType == "number") {
     subInputs.forEach((item,idx) => {
       let key = Object.keys(item)[0];
-      if (item[key]['conditionText'] === value){
-        subQuestions.push(makeComponent(item[key].questionType, item, key, idx));
+      let condition = item[key]['condition'];
+      let conditionValue = parseInt(item[key]['conditionText']);
+      if (condition === "equals"){
+        if(conditionValue === parseInt(value)){
+          subQuestions.push(makeComponent(item, key, idx));
+        }
+      } else if(condition === "greater than"){
+        if(conditionValue < parseInt(value)){
+          subQuestions.push(makeComponent(item, key, idx));
+        }
+      } else if((condition === "less than")){
+          if(conditionValue > parseInt(value)){
+          subQuestions.push(makeComponent(item, key, idx));
+        }
       }
     });
   } else{
     subInputs.forEach((item,idx) => {
       let key = Object.keys(item)[0];
       if (item[key]['conditionText'] === value){
-        subQuestions.push(makeComponent(item[key].questionType, item, key, idx));
+        subQuestions.push(makeComponent(item, key, idx));
       }
     });
   }
+  console.log('subQs: ', subQuestions);
   return subQuestions;
 };
