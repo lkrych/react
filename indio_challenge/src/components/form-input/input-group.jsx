@@ -44,6 +44,7 @@ class InputGroup extends Component {
               questionKey = {key}
               condition = {subInput[key]['condition']}
               conditionText = {subInput[key]['conditionText']}
+              parentQuestionType = {this.props.questionType}
               questionType = {subInput[key]['questionType']}
               questionText = {subInput[key]['questionText']}
               subInputs = {subInput[key]['subInputs']}

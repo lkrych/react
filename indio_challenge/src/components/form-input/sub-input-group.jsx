@@ -58,6 +58,7 @@ class SubInputGroup extends Component {
               questionKey = {key}
               condition = {subInput[key]['condition']}
               conditionText = {subInput[key]['conditionText']}
+              parentQuestionType = {this.props.questionType}
               questionType = {subInput[key]['questionType']}
               questionText = {subInput[key]['questionText']}
               subInputs = {subInput[key]['subInputs']}
@@ -73,7 +74,7 @@ class SubInputGroup extends Component {
         <div className = "sub-question-group">
           <Dropdown
             auto={false}
-            source={this.conditions}
+            source={this.conditionsHash[this.props.parentQuestionType]}
             onChange={this.onInputChange.bind(this, 'condition')}
             label='Select Condition'
             value={this.props.condition}
