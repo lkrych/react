@@ -42,7 +42,7 @@ class SubInputGroup extends Component {
           <Dropdown
             auto={false}
             source={this.conditions}
-            onChange={this.onInputChange.bind(this, 'questionType')}
+            onChange={this.onInputChange.bind(this, 'condition')}
             label='Select question type'
             value={this.props.condition}
           />

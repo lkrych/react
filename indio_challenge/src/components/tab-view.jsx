@@ -6,7 +6,7 @@ import 'react-json-pretty/JSONPretty.monikai.styl';
 
 import FormCreator from './form-creator';
 import FormBuilder from './form-builder';
-import { removeSubInput } from '../util/remove-subs';
+import { removeSubInput, updateSubInput, addNestedSubInput } from '../util/remove-subs';
 const uuidv1 = require('uuid/v1');
 
 //in order to pass state across tabs, the logic for modifying the state needs
@@ -26,23 +26,6 @@ class TabView extends Component {
     this.removeInput = this.removeInput.bind(this);
     this.addSubInput = this.addSubInput.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
-  }
-
-  componentDidMount(){
-    // let subInputs = {};
-    // Object.keys(this.state.form).forEach(key => {
-    //   this.state.form[key]['subInputs'].forEach(subInputKey => {
-    //     if (subInputs[key]){
-    //       subInputs[key].push(subInputKey);
-    //     }else{
-    //       subInputs[key] = [subInputKey];
-    //     }
-    //   });
-    // });
-    //
-    // this.setState({
-    //   subInputs
-    // });
   }
 
   componentDidUpdate(){
@@ -87,35 +70,35 @@ class TabView extends Component {
     newInput[inputId] = {condition: '', conditionText: '',
                         questionText: '', questionType: '', subInputs: []};
     var newForm = this.state.form;
-    var parent = newForm[parentId];
-    parent.subInputs.push(newInput);
-    //update form state
-    this.setState({
-      form: newForm
-    });
-    //update subInputs state
-    // var parentSubInputs = this.state.subInputs[parentId];
-    // if (parentSubInputs){
-    //   parentSubInputs.push(inputId);
-    //   this.setState({
-    //     subInputs: merge({}, this.state.subInputs, parentSubInputs)
-    //   });
-    // }else{
-    //   var newSubInputs = this.state.subInputs;
-    //   newSubInputs[parentId] = [inputId];
-    //   this.setState({
-    //     subInputs: merge({}, this.state.subInputs, newSubInputs)
-    //   });
-    // }
+    if(newForm[parentId]){
+      var parent = newForm[parentId];
+      parent.subInputs.push(newInput);
+      //update form state
+      this.setState({
+        form: newForm
+      });
+    } else{
+      addNestedSubInput(newForm, parentId, newInput);
+      this.setState({
+        form: newForm
+      });
+    }
   }
 
   //can be called on each individual field that can be edited
   onInputChange(questionId, name, value){
     const newForm = this.state.form;
-    newForm[questionId][name] = value;
-    this.setState({
-      form: newForm
-    });
+    if(this.state.form[questionId]){
+      newForm[questionId][name] = value;
+      this.setState({
+        form: newForm
+      });
+    } else {
+      updateSubInput(newForm, questionId, name, value);
+      this.setState({
+        form: newForm
+      });
+    }
   }
 
 
