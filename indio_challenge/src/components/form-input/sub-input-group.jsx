@@ -9,6 +9,20 @@ class SubInputGroup extends Component {
   constructor(props){
     super(props);
 
+    this.conditionsHash = {
+      "number": [
+        { value: 'equals', label: "Equals" },
+        { value: 'greater than', label: "Greater than" },
+        { value: 'less than', label: "Less than" }
+      ],
+      "text": [
+        { value: 'equals', label: "Equals" }
+      ],
+      "radio": [
+        { value: 'equals', label: "Equals" }
+      ]
+    };
+
     this.conditions = [
       { value: 'equals', label: "Equals" },
       { value: 'greater than', label: "Greater than" },

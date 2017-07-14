@@ -27,7 +27,7 @@ const makeComponent = (item, key, idx) => {
 
 export const displayConditional = (questionType, value, subInputs) => {
   const subQuestions = [];
-  if(questionType == "radio"){
+  if(questionType === "radio"){
     subInputs.forEach((item,idx) => {
       let key = Object.keys(item)[0];
       if (item[key]['conditionText'] === value){
@@ -43,11 +43,11 @@ export const displayConditional = (questionType, value, subInputs) => {
         if(conditionValue === parseInt(value)){
           subQuestions.push(makeComponent(item, key, idx));
         }
-      } else if(condition === "greater than"){
+      } else if(condition == "greater than"){
         if(conditionValue < parseInt(value)){
           subQuestions.push(makeComponent(item, key, idx));
         }
-      } else if((condition === "less than")){
+      } else if((condition == "less than")){
           if(conditionValue > parseInt(value)){
           subQuestions.push(makeComponent(item, key, idx));
         }
@@ -56,7 +56,7 @@ export const displayConditional = (questionType, value, subInputs) => {
   } else{
     subInputs.forEach((item,idx) => {
       let key = Object.keys(item)[0];
-      if (item[key]['conditionText'] === value){
+      if (item[key]['conditionText'].toLowerCase() === value.toLowerCase()){
         subQuestions.push(makeComponent(item, key, idx));
       }
     });
