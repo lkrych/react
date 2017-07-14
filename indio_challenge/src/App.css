@@ -92,5 +92,8 @@
 
 .radio-group{
   display: flex;
-  align-content: space-around;
+}
+
+.no-radio-button{
+  margin-left: 80px;
 }

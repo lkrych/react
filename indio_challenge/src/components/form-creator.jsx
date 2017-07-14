@@ -20,21 +20,24 @@ class FormCreator extends Component {
         return(
           <div key = {idx}>
             <p>{element.questionText}</p>
-            <RadioButtons />
+            <RadioButtons
+              subItems = {element.subItems} />
           </div>
         );
       } else if (element.questionType == 'number'){
         return(
           <div key = {idx}>
             <p>{element.questionText}</p>
-            <NumberInput />
+            <NumberInput
+              subItems = {element.subItems} />
           </div>
         );
       } else {
           return(
             <div key = {idx}>
               <p>{element.questionText}</p>
-              <TextInput />
+              <TextInput
+                subItems = {element.subItems} />
             </div>
           );
       }

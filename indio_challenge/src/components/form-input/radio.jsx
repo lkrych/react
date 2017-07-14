@@ -20,7 +20,7 @@ class RadioButtons extends Component {
     return (
       <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange} className ="radio-group">
         <RadioButton label='Yes' value='yes'/>
-        <RadioButton label='No' value='no'/>
+        <RadioButton label='No' value='no' className="no-radio-button"/>
       </RadioGroup>
     );
   }
