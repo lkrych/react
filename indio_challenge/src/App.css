@@ -105,3 +105,20 @@
   margin-right: auto;
   width: 50%;
 }
+
+.sub-questions-form{
+  margin-left: 40px;
+}
+
+.form-component-container{
+
+}
+
+.form-component-main{
+  padding-bottom: 2vh;
+}
+
+.form-component-sub{
+  padding-bottom: 2vh;
+  margin-left: 40px;
+}

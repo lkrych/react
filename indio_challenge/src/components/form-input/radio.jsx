@@ -21,12 +21,14 @@ class RadioButtons extends Component {
   render(){
     const subQuestions = displayConditional("radio", this.state.value, this.props.subInputs);
     return (
-      <div>
-        <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange} className ="radio-group">
-          <RadioButton label='yes' value='yes'/>
-          <RadioButton label='no' value='no' className="no-radio-button"/>
-        </RadioGroup>
-        <div className = 'sub-questions-form'>
+      <div className = "form-component-container">
+        <div className="form-component-main">
+          <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange} className ="radio-group">
+            <RadioButton label='yes' value='yes'/>
+            <RadioButton label='no' value='no' className="no-radio-button"/>
+          </RadioGroup>
+        </div>
+        <div className = 'form-component-sub'>
           {subQuestions}
         </div>
       </div>

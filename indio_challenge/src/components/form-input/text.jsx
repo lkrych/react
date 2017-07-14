@@ -22,9 +22,11 @@ class TextInput extends Component {
     const subQuestions = displayConditional("text", this.state.text, this.props.subInputs);
 
     return (
-      <div>
-        <Input type='text' hint="Please type text here" value={this.state.text} onChange={this.handleChange} />
-          <div className = 'sub-questions-form'>
+      <div className = "form-component-container">
+        <div className="form-component-main">
+          <Input type='text' hint="Please type text here" value={this.state.text} onChange={this.handleChange} />
+        </div>
+          <div className = 'form-component-sub'>
             {subQuestions}
           </div>
       </div>
