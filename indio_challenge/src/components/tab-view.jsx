@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Tab, Tabs} from 'react-toolbox/lib/tabs';
 import merge from 'lodash/merge';
-import JSONPretty from 'react-json-pretty';
-import 'react-json-pretty/JSONPretty.monikai.styl';
+
+
 
 import FormCreator from './form-creator';
 import FormBuilder from './form-builder';
