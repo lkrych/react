@@ -6,6 +6,7 @@ import 'react-json-pretty/JSONPretty.monikai.styl';
 
 import FormCreator from './form-creator';
 import FormBuilder from './form-builder';
+import { removeSubInput } from '../util/remove-subs';
 const uuidv1 = require('uuid/v1');
 
 //in order to pass state across tabs, the logic for modifying the state needs
@@ -65,10 +66,18 @@ class TabView extends Component {
   //allows questions to be deleted
   removeInput(questionId){
     const newForm = this.state.form;
-    delete newForm[questionId];
-    this.setState({
-      form: newForm
-    });
+    if(this.state.form[questionId]){ //if key is in outermost object
+      delete newForm[questionId];
+      this.setState({
+        form: newForm
+      });
+    } else {
+      removeSubInput(newForm, questionId);
+      this.setState({
+        form: newForm
+      });
+    }
+
   }
   //allows questions to be nested
   addSubInput(parentId){

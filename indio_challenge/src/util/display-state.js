@@ -13,7 +13,7 @@ export const displayState = (state) => {
 //helper function for returning all sub-questions
 const depthFirst = (subInputsArray) => {
   if(subInputsArray.length === 1){
-    return subInputsArray[0]
+    return subInputsArray[0];
   }
   let subInputs = [];
   subInputsArray.forEach(subItem => {

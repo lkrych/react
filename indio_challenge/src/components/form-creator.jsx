@@ -6,7 +6,7 @@ import NumberInput from './form-input/number';
 import TextInput from './form-input/text';
 import RadioButtons from './form-input/radio';
 
-import { displayState } from '../util/display_state';
+import { displayState } from '../util/display-state';
 
 class FormCreator extends Component {
   constructor(props){
@@ -15,24 +15,24 @@ class FormCreator extends Component {
 
   render(){
     var stateElements = displayState(this.props.form);
-    var formElements = stateElements.map(element => {
+    var formElements = stateElements.map((element, idx) => {
       if(element.questionType == 'radio'){
         return(
-          <div>
+          <div key = {idx}>
             <p>{element.questionText}</p>
             <RadioButtons />
           </div>
         );
       } else if (element.questionType == 'number'){
         return(
-          <div>
+          <div key = {idx}>
             <p>{element.questionText}</p>
             <NumberInput />
           </div>
         );
       } else {
           return(
-            <div>
+            <div key = {idx}>
               <p>{element.questionText}</p>
               <TextInput />
             </div>

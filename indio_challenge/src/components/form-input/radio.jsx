@@ -6,6 +6,14 @@ import RadioButton from 'react-toolbox/lib/radio/RadioButton';
 class RadioButtons extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      value: 'yes'
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(value){
+    this.setState({value});
   }
 
   render(){
