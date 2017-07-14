@@ -17,7 +17,7 @@ class TextInput extends Component {
 
   render(){
     return (
-      <Input type='text' value={this.state.text} onChange={this.handleChange} />
+      <Input type='text' hint="Please type text here" value={this.state.text} onChange={this.handleChange} />
     );
   }
 }

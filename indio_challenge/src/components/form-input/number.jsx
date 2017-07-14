@@ -17,7 +17,7 @@ class NumberInput extends Component {
 
   render(){
     return (
-      <Input type='text' value={this.state.text} onChange={this.handleChange} />
+      <Input type='text' hint="Please type a number here" value={this.state.text} onChange={this.handleChange} />
     );
   }
 }

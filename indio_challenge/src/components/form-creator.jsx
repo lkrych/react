@@ -14,7 +14,7 @@ class FormCreator extends Component {
   }
 
   render(){
-    var stateElements = displayState(this.props.form);
+    var stateElements = Object.keys(this.props.form).map(key => this.props.form[key]);
     var formElements = stateElements.map((element, idx) => {
       if(element.questionType == 'radio'){
         return(
