@@ -18,7 +18,7 @@ class RadioButtons extends Component {
 
   render(){
     return (
-      <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange}>
+      <RadioGroup name='binary' value={this.state.value} onChange={this.handleChange} className ="radio-group">
         <RadioButton label='Yes' value='yes'/>
         <RadioButton label='No' value='no'/>
       </RadioGroup>

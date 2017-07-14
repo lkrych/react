@@ -30,7 +30,6 @@ class FormBuilder extends Component {
             addSubInput = {this.props.addSubInput}
             onInputChange = {this.props.onInputChange}
             />
-          <p>There are {this.props.form[key].subInputs.length} sub-questions for this question</p>
       </div>
 
 

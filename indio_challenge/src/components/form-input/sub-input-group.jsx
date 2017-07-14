@@ -36,6 +36,24 @@ class SubInputGroup extends Component {
   }
 
   render() {
+    const subQuestions = this.props.subInputs.map(subInput => {
+      let key = Object.keys(subInput)[0];
+        return(
+          <SubInputGroup
+              key = {key}
+              questionKey = {key}
+              condition = {subInput[key]['condition']}
+              conditionText = {subInput[key]['conditionText']}
+              questionType = {subInput[key]['questionType']}
+              questionText = {subInput[key]['questionText']}
+              subInputs = {subInput[key]['subInputs']}
+              removeInput = {this.props.removeInput}
+              addSubInput = {this.props.addSubInput}
+              onInputChange = {this.props.onInputChange}
+              />
+        );
+      });
+
     return (
       <div className = "sub-question-container">
         <div className = "sub-question-group">
@@ -60,6 +78,10 @@ class SubInputGroup extends Component {
         <Button label="Add Sub-Question" onClick = {() => this.addSubInput(this.props.questionKey)} className="" raised primary />
         <span className="button-span"></span>
         <Button label="Delete this question" onClick = {() => this.removeInput(this.props.questionKey)} className="delete-button" raised primary />
+      </div>
+
+      <div className ='sub-questions'>
+        {subQuestions}
       </div>
 
     </div>

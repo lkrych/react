@@ -6,7 +6,7 @@ import 'react-json-pretty/JSONPretty.monikai.styl';
 
 import FormCreator from './form-creator';
 import FormBuilder from './form-builder';
-import { removeSubInput, updateSubInput, addNestedSubInput } from '../util/remove-subs';
+import { removeSubInput, updateSubInput, addNestedSubInput } from '../util/subs-helper';
 const uuidv1 = require('uuid/v1');
 
 //in order to pass state across tabs, the logic for modifying the state needs
@@ -64,7 +64,6 @@ class TabView extends Component {
   }
   //allows questions to be nested
   addSubInput(parentId){
-    console.log('addSubInput was just called');
     let inputId = uuidv1();
     var newInput = {};
     newInput[inputId] = {condition: '', conditionText: '',
@@ -120,7 +119,7 @@ class TabView extends Component {
          </Tab>
          <Tab label='Preview'>
            <h2>Your form</h2>
-           <p>Click on create to revise your form.</p>
+           <p>Click on <b>Create</b> to revise your form.</p>
            <FormCreator
              form= {this.state.form}
              />
@@ -129,7 +128,9 @@ class TabView extends Component {
          <Tab label='Export'>
            <h2>Your data</h2>
            <div className = "json-div">
-             <JSONPretty id="json-pretty" json={this.state.form}></JSONPretty>
+
+             {<JSONPretty id="json-pretty" json={this.state.form}></JSONPretty>}
+
            </div>
          </Tab>
        </Tabs>

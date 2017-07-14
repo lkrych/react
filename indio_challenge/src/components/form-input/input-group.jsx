@@ -56,7 +56,7 @@ class InputGroup extends Component {
     return (
       <div>
         <div className = "question-container">
-          <Input type='text' label='Question' name='questionText' value={this.props.questionText} onChange={this.onInputChange.bind(this, 'questionText')} />
+          <Input type='text' label='Question' name='questionText' value={this.props.questionText} onChange={this.onInputChange.bind(this, 'questionText')}  />
           <Dropdown
             auto={false}
             source={this.questionTypes}

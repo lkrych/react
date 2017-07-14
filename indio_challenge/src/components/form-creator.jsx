@@ -42,8 +42,9 @@ class FormCreator extends Component {
 
     return(
       <div>
-        <p>{JSON.stringify(stateElements)}</p>
-        {formElements}
+        <form className="output-form">
+          {formElements}
+        </form>
       </div>
 
 
